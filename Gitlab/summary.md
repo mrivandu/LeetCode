@@ -1,6 +1,6 @@
 # summary
 
-## GitLab 的优势和应用场景
+## 一 GitLab 的优势和应用场景
 
 - 开源免费，适合中小型企业公司将代码放置在该系统中。
 
@@ -12,7 +12,7 @@
 
 - 支持内置 HA ，保证在高并发下仍旧实现高可用性。
 
-## GitLab 的主要服务构成
+## 二 GitLab 的主要服务构成
 
 - Nginx 静态 Web 服务器。
 
@@ -26,7 +26,7 @@
 
 - Redis 缓存服务器。
 
-## GitLab 的工作流程
+## 三 GitLab 的工作流程
 
 - 创建并克隆项目。
 
@@ -40,7 +40,51 @@
 
 - 项目领导审查代码并确认合并申请。
 
-## GitLab 的安装配置管理
+## 四 GitLab(Omnibus Gitlab-ce package) 的安装配置管理
 
-### Omnibus Gitlab-ce package
+### 4.1 初始化安装环境(CentOS-1810)
 
+关闭 SELinux 和防火墙或添加防火墙策略，重启系统。本实践操作过程中，关闭了防火墙。添加防火墙策略命令如下：
+
+```bash
+firewall-cmd --permanent --add-service=http
+firewall-cmd --reload
+```
+
+### 4.2 Omnibus GitLab 等相关配置初始化并完成安装
+
+- 证书创建与配置加载。
+
+```bash
+openssl genrsa -out ${gitlab_key} 2048
+openssl req -new -key ${gitlab_key} -out ${gitlab_csr}
+```
+
+填写示例：
+
+```txt
+Country Name (2 letter code) [XX]:cn
+State or Province Name (full name) []:bj
+Locality Name (eg, city) [Default City]:bj
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:gysl
+Common Name (eg, your name or your server's hostname) []:gitlab.gysl.com
+Email Address []:mrivandu@hotmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:123456
+An optional company name []:
+```
+
+```bash
+
+
+- Nginx SSL 代理服务配置。
+
+- 初始化 GitLab 相关的服务并完成安装。
+
+
+## 参考资料
+
+[官方文档](https://docs.gitlab.com/ce/README.html)
