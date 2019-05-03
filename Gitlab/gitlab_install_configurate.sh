@@ -16,4 +16,5 @@
 
 # Omnibus GitLab-ce package
 # We can see: https://about.gitlab.com/install/#centos-7
-yum -y install curl policycoreutils openssh-server openssh-client postfix
+yum -y install policycoreutils
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | bash
