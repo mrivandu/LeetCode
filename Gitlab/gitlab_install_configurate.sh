@@ -27,7 +27,7 @@ gitlab_pem=${gitlab_ssl}/dhparams.pem
 # Omnibus GitLab-ce package
 # We can see: https://about.gitlab.com/install/#centos-7 or https://about.gitlab.com/install
 # And you can also execute gitlab_ce_rpm.sh.
-curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | bash
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | bash
 # Install gitlab-ce.
 yum -y install policycoreutils gitlab-ce
 if [ $? -eq ];then
@@ -38,7 +38,7 @@ else
   exit 127
 fi
 
-# Make SSL certificates.
+# Make SSL certificates. Learn more: https://www.jianshu.com/p/4111534b339f
 cd ${gitlab_ssl}
 openssl genrsa -out ${gitlab_key} 2048
 openssl req -new -key ${gitlab_key} -out ${gitlab_csr}
