@@ -42,4 +42,5 @@
 
 ## GitLab 的安装配置管理
 
-om
+### Omnibus Gitlab-ce package
+
