@@ -42,7 +42,7 @@
 
 ## 四 GitLab(Omnibus Gitlab-ce package) 的安装配置管理
 
-### 4.1 初始化安装环境
+### 4.1 初始化安装环境(CentOS-1810)
 
 关闭 SELinux 和防火墙或添加防火墙策略，重启系统。本实践操作过程中，关闭了防火墙。添加防火墙策略命令如下：
 
@@ -53,8 +53,38 @@ firewall-cmd --reload
 
 ### 4.2 Omnibus GitLab 等相关配置初始化并完成安装
 
-- 证书创建于配置加载。
+- 证书创建与配置加载。
+
+```bash
+openssl genrsa -out ${gitlab_key} 2048
+openssl req -new -key ${gitlab_key} -out ${gitlab_csr}
+```
+
+填写示例：
+
+```txt
+Country Name (2 letter code) [XX]:cn
+State or Province Name (full name) []:bj
+Locality Name (eg, city) [Default City]:bj
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:gysl
+Common Name (eg, your name or your server's hostname) []:gitlab.gysl.com
+Email Address []:mrivandu@hotmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:123456
+An optional company name []:
+```
+
+```bash
+
 
 - Nginx SSL 代理服务配置。
 
 - 初始化 GitLab 相关的服务并完成安装。
+
+
+## 参考资料
+
+[官方文档](https://docs.gitlab.com/ce/README.html)
