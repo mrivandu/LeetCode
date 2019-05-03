@@ -36,6 +36,7 @@ if [ $? -eq ];then
 else
   echo "Installation failed. Please check! "
   exit 127
+fi
 
 # Make SSL certificates.
 cd ${gitlab_ssl}
