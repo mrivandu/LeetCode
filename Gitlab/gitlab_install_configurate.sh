@@ -21,4 +21,5 @@ systemctl disable firewalld
 # Disable SELinux.
 
 # Omnibus GitLab-ce package
+# We can see: https://about.gitlab.com/install/#centos-7
 yum -y install curl policycoreutils openssh-server openssh-client postfix
