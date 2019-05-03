@@ -53,10 +53,9 @@ firewall-cmd --reload
 
 ### 4.2 Omnibus GitLab 等相关配置初始化并完成安装
 
-- 证书创建与配置加载。
+- 证书创建与配置加载。相关安装细节请参见脚本（相关步骤有注释）：gitlab_install_configurate.sh。执行过程中需要手动输入一些内容，请参见示例。
 
 ```bash
-openssl genrsa -out ${gitlab_key} 2048
 openssl req -new -key ${gitlab_key} -out ${gitlab_csr}
 ```
 
@@ -77,7 +76,7 @@ A challenge password []:123456
 An optional company name []:
 ```
 
-```bash
+
 
 
 - Nginx SSL 代理服务配置。

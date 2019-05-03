@@ -20,14 +20,18 @@ gitlab_csr=${gitlab_ssl}/gitlab.gysl.com.csr
 gitlab_crt=${gitlab_ssl}/gitlab.gysl.com.crt
 gitlab_pem=${gitlab_ssl}/dhparams.pem
 
+mkdir -p ${gitlab_ssl}
+
 # Omnibus GitLab-ce package
 # We can see: https://about.gitlab.com/install/#centos-7 or https://about.gitlab.com/install
-yum -y install policycoreutils
+# And you can also execute gitlab_ce_rpm.sh.
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | bash
-# And you can also execute 
+# Install gitlab-ce.
+yum -y install policycoreutils gitlab-ce
+echo "GitLab-ce had been installed in your system. Please check them. "
+sleep 10
 
-
-mkdir -p ${gitlab_ssl}
+# Make SSL certificates.
 cd ${gitlab_ssl}
 openssl genrsa -out ${gitlab_key} 2048
 openssl req -new -key ${gitlab_key} -out ${gitlab_csr}
@@ -35,4 +39,5 @@ openssl x509 -req -days 365 -in ${gitlab_csr} -signkey ${gitlab_key} -out ${gitl
 openssl dhparam -out ${gitlab_pem} 2048
 chmod 600 *
 ls -l
-
+echo "The certificates had been created. Please check them."
+sleep 10
