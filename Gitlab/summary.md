@@ -44,7 +44,7 @@
 
 ### 4.1 初始化安装环境(CentOS-1810)
 
-关闭 SELinux 和防火墙或添加防火墙策略，重启系统。本实践操作过程中，关闭了防火墙。添加防火墙策略命令如下：
+在该版本的系统中已经安装了：openssh-server、openssh-client、curl、postfix等。关闭 SELinux 和防火墙或添加防火墙策略，重启系统。本次操作过程中，关闭了防火墙。添加防火墙策略命令如下：
 
 ```bash
 firewall-cmd --permanent --add-service=http
@@ -76,8 +76,7 @@ A challenge password []:123456
 An optional company name []:
 ```
 
-
-
+整个安装过程可能需要等待很久，占用 1.4GB 左右的磁盘空间。
 
 - Nginx SSL 代理服务配置。
 
