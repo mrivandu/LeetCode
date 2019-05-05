@@ -84,7 +84,6 @@ An optional company name []:
 
 - 初始化 GitLab 相关的服务并完成安装。
 
-
 ## 参考资料
 
 [官方文档](https://docs.gitlab.com/ce/README.html)
