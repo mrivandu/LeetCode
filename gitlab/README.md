@@ -1,6 +1,8 @@
-# summary
+# 自动化运维三剑客 GitLab 、Ansible、Jenkins 实践
 
-## 一 GitLab 的优势和应用场景
+## 一 GitLab
+
+### 1.1 GitLab 的优势和应用场景
 
 - 开源免费，适合中小型企业公司将代码放置在该系统中。
 
@@ -12,7 +14,7 @@
 
 - 支持内置 HA ，保证在高并发下仍旧实现高可用性。
 
-## 二 GitLab 的主要服务构成
+### 1.2 GitLab 的主要服务构成
 
 - Nginx 静态 Web 服务器。
 
@@ -26,7 +28,7 @@
 
 - Redis 缓存服务器。
 
-## 三 GitLab 的工作流程
+### 1.3 GitLab 的工作流程
 
 - 创建并克隆项目。
 
@@ -40,9 +42,9 @@
 
 - 项目领导审查代码并确认合并申请。
 
-## 四 GitLab(Omnibus Gitlab-ce package) 的安装配置管理
+### 1.4 GitLab(Omnibus Gitlab-ce package) 的安装配置管理
 
-### 4.1 初始化安装环境(CentOS-1810)
+#### 1.4.1 初始化安装环境(CentOS-1810)
 
 在该版本的系统中已经安装了：openssh-server、openssh-client、curl、postfix等。关闭 SELinux 和防火墙或添加防火墙策略，重启系统。本次操作过程中，关闭了防火墙。添加防火墙策略命令如下：
 
@@ -51,7 +53,7 @@ firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
 ```
 
-### 4.2 Omnibus GitLab 等相关配置初始化并完成安装
+#### 1.4.2 Omnibus GitLab 等相关配置初始化并完成安装
 
 - 证书创建与配置加载。相关安装细节请参见脚本（相关步骤有注释）：gitlab_install_configurate.sh。执行过程中需要手动输入一些内容，请参见示例。
 
