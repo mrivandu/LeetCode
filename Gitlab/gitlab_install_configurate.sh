@@ -38,7 +38,7 @@ else
   exit 127
 fi
 
-# Make SSL certificates. Learn more: https://www.jianshu.com/p/4111534b339f
+# Create SSL certificates. Learn more: https://www.jianshu.com/p/4111534b339f
 cd ${gitlab_ssl}
 openssl genrsa -out ${gitlab_key} 2048
 openssl req -new -key ${gitlab_key} -out ${gitlab_csr}
