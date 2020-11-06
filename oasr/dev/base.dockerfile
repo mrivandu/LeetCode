@@ -32,8 +32,7 @@ SHELL \
            gcc-c++\
            make \
            file\ 
-           bzip2\
-           ; \
+           bzip2; \
     yum clean all; \
     rm -rf /var/cache/yum/*
 
