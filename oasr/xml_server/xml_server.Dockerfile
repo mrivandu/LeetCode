@@ -4,7 +4,7 @@ ADD centos-7.8.2003-x86_64-docker.tar.xz /
 
 LABEL \
     system="oasr" \
-    app="TBNR_release_time" \
+    app="DetectOverlap" \
     vendor="CMOS" \
     author="Ivan Du" \
     version="2.1.2"
@@ -25,18 +25,16 @@ RUN set -eux; \
 ENV TZ="Asia/Shanghai" \
     LANG="zh_CN.UTF-8"
 
-COPY TBNR_release_time /TBNR_release_time
+COPY xml_server /xml_server
 COPY [ "tini","/usr/local/bin/" ]
 
-WORKDIR /TBNR_release_time/bin
+WORKDIR /xml_server
 
-ENV LD_LIBRARY_PATH="./:../KWSAPI_ENV/KWSAPI_LIBLINUX:${LD_LIBRARY_PATH}" \
-    TEL2NUM="false" \
-    LINENUM="2" \
-    IP="127.0.0.1" \
-    PORTS="6608" \
-    PATH="/TBNR_release_time/bin:${PATH}"
+ENV IP="127.0.0.1" \
+    PORTS="6613" \
+    NTHREAD="1" \
+    BADDPUNCTUATION="true" \
+    LD_LIBRARY_PATH="./lib:${LD_LIBRARY_PATH}" \
+    PATH="/xml_server:${PATH}"
 
-EXPOSE 6608/tcp
-
-CMD [ "/bin/bash","-c","exec tini -- offline_customer_server_test_dnnvad -ip ${IP} -port ${PORTS} -format 8K_16BIT_PCM -sysDir ../model -num ${LINENUM} -config WFSTDecoder-inputMethod_dnn_onlyrec.cfg  -tel2Num ${TEL2NUM}" ]
+CMD [ "/bin/bash","-c","exec tini -- XMLServer -ipAddr ${IP} -ports ${PORTS} -nThread ${NTHREAD}" ]
