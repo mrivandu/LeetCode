@@ -6,19 +6,17 @@ LABEL author="duruihong" e-mail="duruihong@cmos.chinamobile.com" vendor="cmos" n
 ENV TZ="Asia/Shanghai" \
     LANG="en_US.UTF-8"
 
-
 # 复制入口文件。
 COPY docker-entrypoint.sh /usr/local/bin
 
 # 设置JDK环境变量值。
-ENV _JAVA_OPTIONS="-Xms1024m -Xmx2048m" \
-    JAVA_HOME="/jdk1.7.0_45" \
+ENV JAVA_HOME="/jdk1.7.0_45" \
     CLASSPATH=".:/jdk1.7.0_45/lib/dt.jar:/jdk1.7.0_45/lib/tools.jar"
 
 # 设置tomcat环境变量。
 ENV TOMCAT_HOME="/apache-tomcat-8.5.5" \
-    CATALINA_HOME="apache-tomcat-8.5.5" \
-    CATALINA_BASE="apache-tomcat-8.5.5"
+    CATALINA_HOME="/apache-tomcat-8.5.5" \
+    CATALINA_BASE="/apache-tomcat-8.5.5"
 
 # log4j.properties 相关的环境变量
 ENV LOG4J_ROOTLOGGER="error, MyConsole, MyRfile1" \

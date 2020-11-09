@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
 
-configuration = r'H:\automatic-ops\oasr\dev\jdbc.properties'
+configuration = r'H:\automatic-ops\oasr\DetectOverlap\conf\in.cfg'
 
 env = []
 ini = []
