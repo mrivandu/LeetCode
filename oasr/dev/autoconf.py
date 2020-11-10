@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
 
-configuration = r'H:\automatic-ops\oasr\DetectOverlap\conf\in.cfg'
+configuration = r'H:\automatic-ops\oasr\Offline_System_Client\conf\cfg.ini'
 
 env = []
 ini = []

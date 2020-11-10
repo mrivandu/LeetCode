@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author:DURUIHONG
-# Build time: 2020-07-14
+# Build time: 2020-11-10
 # E-mail:duruihong@cmos.chinamobile.com
 
 set -eux
