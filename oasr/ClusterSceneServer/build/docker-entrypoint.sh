@@ -4,7 +4,6 @@
 # E-mail:duruihong@cmos.chinamobile.com
 
 set -eux
-ulimit -c unlimited
 # export IPADDR=`hostname -i`
 cat>/ClusterSceneServer/configure.cfg<<-EOF
 <ClusterCfg>

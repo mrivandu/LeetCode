@@ -18,6 +18,7 @@ RUN set -eux; \
              kde-l10n-Chinese-4.10.5-2.el7.noarch.rpm; \
     localedef -c -f UTF-8 -i zh_CN zh_CN.utf8; \
     echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf; \
+    ulimit -c unlimited; \
     rm -rf /var/cache/yum/* /zh-cn-utf8
 
 # 定义时区参数和编码字符集。
@@ -57,7 +58,7 @@ WORKDIR /ClusterSceneServer
 # 与总控端通信端口:PORTS=6609
 # 角色区分服务端口：ROLESERVERPORT=20101
 # IPADDR:Tomcat
-ENV LD_LIBRARY_PATH="./lib:./Cluster:./KWSAPI_LIBLINUX:${LD_LIBRARY_PATH}" \
+ENV LD_LIBRARY_PATH="/ClusterSceneServer/lib:/ClusterSceneServer/Cluster:/ClusterSceneServer/KWSAPI_LIBLINUX:${LD_LIBRARY_PATH}" \
     IPADDR="127.0.0.1" \
     PORTS="6609" \
     ROLESERVERPORT="20101" \

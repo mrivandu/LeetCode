@@ -83,12 +83,7 @@ echo "export C_INCLUDE_PATH=\$C_INCLUDE_PATH:$ffmpeg_dir/include/">>~/.bash_prof
 echo "export CPLUS_INCLUDE_PATH=\$CPLUS_INCLUDE_PATH:$ffmpeg_dir/include/">>~/.bash_profile
 echo "export PKG_CONFIG_PATH=\$PKG_CONFIG_PATH:$ffmpeg_dir/lib/pkgconfig/">>~/.bash_profile
 
-echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$ffmpeg_dir/lib/">>~/.bashrc
-echo "export LIBRARY_PATH=\$LIBRARY_PATH:$ffmpeg_dir/lib/">>~/.bashrc
-echo "export PATH=\$PATH:$ffmpeg_dir/bin/">>~/.bashrc
-echo "export C_INCLUDE_PATH=\$C_INCLUDE_PATH:$ffmpeg_dir/include/">>~/.bashrc
-echo "export CPLUS_INCLUDE_PATH=\$CPLUS_INCLUDE_PATH:$ffmpeg_dir/include/">>~/.bashrc
-echo "export PKG_CONFIG_PATH=\$PKG_CONFIG_PATH:$ffmpeg_dir/lib/pkgconfig/">>~/.bashrc
+
 
 source ~/.bash_profile
 source ~/.bashrc
