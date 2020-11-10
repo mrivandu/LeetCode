@@ -72,12 +72,12 @@ RUN set -eux; \
     rpm -ivh *; \
     localedef -c -f UTF-8 -i zh_CN zh_CN.utf8; \
     echo 'LANG="zh_CN.UTF-8"' > /etc/locale.conf; \
+    ulimit -c unlimited; \
     rm -rf /var/cache/yum/* \
            /achievements.tar.gz \
            /zh-cn-utf8  \
            /centos-7.8.2003-x86_64-docker.tar.xz \
-           /anaconda-post.log; \
-    ulimit -c unlimited
+           /anaconda-post.log
 
 # 定义时区参数和编码字符集。
 ENV TZ="Asia/Shanghai" \
