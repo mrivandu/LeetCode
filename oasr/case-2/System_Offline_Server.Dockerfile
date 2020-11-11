@@ -55,6 +55,7 @@ RUN set -eux; \
     cp /usr/lib64/libgomp.so.1 /os/usr/lib64/libgomp.so.1; \
     cp /lib64/libstdc++.so.6 /os/lib64/libstdc++.so.6; \
     cp -r /thinkit_offline_systemd/Thinkit_Offline_SystemD/System_Offline_Server/{ClusterSceneServer,DetectOverlap,Offline_System_Client,TBNR_release_time,xml_server} /os/; \
+    chmod +x /os/usr/local/bin/*; \
     rm -rf /os/var/cache/yum/* \
            zh-cn-utf8* gcc g++ \
            file bzip2 ffmpeg-3.0* \
@@ -131,15 +132,15 @@ ENV IDSTCLUSTERNUM="2" \
 # 角色区分服务端口：ROLESERVERPORT=20101
 # IPADDR:Tomcat
 ENV LD_LIBRARY_PATH="/ClusterSceneServer/lib:/ClusterSceneServer/Cluster:/ClusterSceneServer/KWSAPI_LIBLINUX:${LD_LIBRARY_PATH}" \
-    IPADDR="127.0.0.1" \
-    PORTS="6609" \
+    CIPADDR="127.0.0.1" \
+    CPORTS="6609" \
     ROLESERVERPORT="20101" \
     ABFORMAT="AABB" \
     DELSPACE="true" \
-    NTHREAD="3"
+    CNTHREAD="3"
 
 # DetectOverlap
-ENV NTHREAD="20" \
+ENV DNTHREAD="20" \
     LICENCEFILE="license.dat" \
     IN_DATA_FORMAT="FE_8K_16BIT_PCM" \
     FE_LOG_FILE="frontend.log" \
@@ -148,9 +149,9 @@ ENV NTHREAD="20" \
     DNN_VAD_CFG="source/dnn_vad/dnn_vad.cfg" \
     DETECTOVERLAP="true" \
     DETECT_OVERLAP_CFG="source/detect_overlap/detect_overlap.cfg" \
-    LD_LIBRARY_PATH="DetectOverlap/:DetectOverlap/lib:${LD_LIBRARY_PATH}" \
-    IP="127.0.0.1" \
-    PORTS="6610"
+    LD_LIBRARY_PATH="/DetectOverlap/:DetectOverlap/lib:${LD_LIBRARY_PATH}" \
+    DIP="127.0.0.1" \
+    DPORTS="6610"
 
 # Offline_System_Client
 ENV MYSQLSERVERIP="192.168.96.89" \
@@ -162,8 +163,8 @@ ENV MYSQLSERVERIP="192.168.96.89" \
     REDISCLUSTER="true" \
     REDISIP="192.168.96.86" \
     REDISPORT="30010" \
-    REDISADD="192.168.96.87:7010,192.168.96.87:7011,192.168.96.87:7012,192.168.96.87:7013,192.168.96.87:7014,192.168.96.87:7015" \
-    REDISPASS="foobared" \
+    REDISADD="172.19.105.75:20066,172.19.105.7:20066,172.19.105.30:20066,172.19.105.44:20066,172.19.105.19:20066,172.19.105.5:20066" \
+    REDISPASS="asr0426" \
     REDISTASKLIST="voicetask" \
     REDISNOTIFYLIST="thinkit_notify_zyzx" \
     CHANNELS="Mono" \
@@ -199,15 +200,17 @@ ENV MYSQLSERVERIP="192.168.96.89" \
 ENV LD_LIBRARY_PATH="/TBNR_release_time/bin:/TBNR_release_time/KWSAPI_ENV/KWSAPI_LIBLINUX:${LD_LIBRARY_PATH}" \
     TEL2NUM="false" \
     LINENUM="2" \
-    PORTS="6608"
+    TIP="127.0.0.1" \
+    TPORTS="6608"
 
 # xml_server
-ENV PORTS="6613" \
-    NTHREAD="1" \
+ENV XIP="127.0.0.1" \
+    XPORTS="6613" \
+    XNTHREAD="1" \
     BADDPUNCTUATION="true" \
-    LD_LIBRARY_PATH="./lib:${LD_LIBRARY_PATH}"
+    LD_LIBRARY_PATH="/xml_server/lib:${LD_LIBRARY_PATH}"
 
-EXPOSE 6608/tcp 6609/tcp 6610/tcp 6613/tcp
+EXPOSE 6608/tcp 6609/tcp 6610/tcp 6613/tcp 20101/tcp
 
 ENTRYPOINT \
     [ "System_Offline_Server.sh" ]

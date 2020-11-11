@@ -12,7 +12,7 @@ sed -i "25s/;user=chrism/user=root/g" /etc/supervisord.conf
 # ClusterSceneServer
 cat>/etc/supervisord.d/ClusterSceneServer.ini<<-EOF
 [program:ClusterSceneServer]
-command=Cluster_Scene_server_test -ipAddr ${IPADDR} -ports ${PORTS} -roleServerPort ${ROLESERVERPORT} -ABFormat ${ABFORMAT} -delSpace ${DELSPACE} -nThread ${NTHREAD} -logFile ${LOGTXT}              ; the program (relative uses PATH, can take args)
+command=Cluster_Scene_server_test -ipAddr ${CIPADDR} -ports ${CPORTS} -roleServerPort ${ROLESERVERPORT} -ABFormat ${ABFORMAT} -delSpace ${DELSPACE} -nThread ${CNTHREAD} -logFile ${LOGTXT}              ; the program (relative uses PATH, can take args)
 ;process_name=%(program_name)s ; process_name expr (default %(program_name)s)
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/ClusterSceneServer               ; directory to cwd to before exec (def no cwd)
@@ -78,7 +78,7 @@ EOF
 # DetectOverlap
 cat>/etc/supervisord.d/DetectOverlap.ini<<-EOF
 [program:DetectOverlap]
-command=DetectOverlapPro -nThread ${NTHREAD} -config in.cfg  -ip ${IP} -port ${PORTS}              ; the program (relative uses PATH, can take args)
+command=DetectOverlapPro -nThread ${DNTHREAD} -config in.cfg  -ip ${DIP} -port ${DPORTS}              ; the program (relative uses PATH, can take args)
 ;process_name=%(program_name)s ; process_name expr (default %(program_name)s)
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/Offline_System_Client               ; directory to cwd to before exec (def no cwd)
@@ -108,7 +108,7 @@ directory=/Offline_System_Client               ; directory to cwd to before exec
 EOF
 
 cat>/DetectOverlap/in.cfg<<EOF
-nThread=${NTHREAD}
+nThread=${DNTHREAD}
 LicenceFile=${LICENCEFILE}
 IN_DATA_FORMAT=${IN_DATA_FORMAT}
 FE_LOG_FILE=${FE_LOG_FILE}
@@ -259,7 +259,7 @@ EOF
 # TBNR_release_time
 cat>/etc/supervisord.d/TBNR_release_time.ini<<-EOF
 [program:TBNR_release_time]
-command=offline_customer_server_test_dnnvad -ip ${IP} -port ${PORTS} -format 8K_16BIT_PCM -sysDir ../model -num ${LINENUM} -config WFSTDecoder-inputMethod_dnn_onlyrec.cfg  -tel2Num ${TEL2NUM}             ; the program (relative uses PATH, can take args)
+command=offline_customer_server_test_dnnvad -ip ${TIP} -port ${TPORTS} -format 8K_16BIT_PCM -sysDir ../model -num ${LINENUM} -config WFSTDecoder-inputMethod_dnn_onlyrec.cfg  -tel2Num ${TEL2NUM}             ; the program (relative uses PATH, can take args)
 ;process_name=%(program_name)s ; process_name expr (default %(program_name)s)
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/TBNR_release_time/bin               ; directory to cwd to before exec (def no cwd)
@@ -291,7 +291,7 @@ EOF
 # xml_server
 cat>/etc/supervisord.d/xml_server.ini<<-EOF
 [program:xml_server]
-command=XMLServer -ipAddr ${IP} -ports ${PORTS} -nThread ${NTHREAD}             ; the program (relative uses PATH, can take args)
+command=XMLServer -ipAddr ${XIP} -ports ${XPORTS} -nThread ${XNTHREAD}             ; the program (relative uses PATH, can take args)
 ;process_name=%(program_name)s ; process_name expr (default %(program_name)s)
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/xml_server               ; directory to cwd to before exec (def no cwd)
