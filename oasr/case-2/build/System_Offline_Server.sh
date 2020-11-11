@@ -5,7 +5,7 @@
 
 set -eux
 
-export IPADDRESS=`hostname -i`
+# export IPADDRESS=`hostname -i`
 sed -i "21s/nodaemon=false/nodaemon=true/g" /etc/supervisord.conf
 sed -i "25s/;user=chrism/user=root/g" /etc/supervisord.conf
 
@@ -17,7 +17,7 @@ command=Cluster_Scene_server_test -ipAddr ${CIPADDR} -ports ${CPORTS} -roleServe
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/ClusterSceneServer               ; directory to cwd to before exec (def no cwd)
 ;umask=022                     ; umask for process (default None)
-;priority=999                  ; the relative start priority (default 999)
+priority=998                  ; the relative start priority (default 999)
 ;autostart=true                ; start at supervisord start (default: true)
 ;autorestart=true              ; retstart at unexpected quit (default: true)
 ;startsecs=10                  ; number of secs prog must stay running (def. 1)
@@ -81,9 +81,9 @@ cat>/etc/supervisord.d/DetectOverlap.ini<<-EOF
 command=DetectOverlapPro -nThread ${DNTHREAD} -config in.cfg  -ip ${DIP} -port ${DPORTS}              ; the program (relative uses PATH, can take args)
 ;process_name=%(program_name)s ; process_name expr (default %(program_name)s)
 ;numprocs=1                    ; number of processes copies to start (def 1)
-directory=/Offline_System_Client               ; directory to cwd to before exec (def no cwd)
+directory=/DetectOverlap               ; directory to cwd to before exec (def no cwd)
 ;umask=022                     ; umask for process (default None)
-;priority=999                  ; the relative start priority (default 999)
+priority=998                  ; the relative start priority (default 999)
 ;autostart=true                ; start at supervisord start (default: true)
 ;autorestart=true              ; retstart at unexpected quit (default: true)
 ;startsecs=10                  ; number of secs prog must stay running (def. 1)
@@ -133,7 +133,7 @@ command=custom_client_multiserver             ; the program (relative uses PATH,
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/Offline_System_Client               ; directory to cwd to before exec (def no cwd)
 ;umask=022                     ; umask for process (default None)
-;priority=999                  ; the relative start priority (default 999)
+priority=999                  ; the relative start priority (default 999)
 ;autostart=true                ; start at supervisord start (default: true)
 ;autorestart=true              ; retstart at unexpected quit (default: true)
 ;startsecs=10                  ; number of secs prog must stay running (def. 1)
@@ -264,7 +264,7 @@ command=offline_customer_server_test_dnnvad -ip ${TIP} -port ${TPORTS} -format 8
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/TBNR_release_time/bin               ; directory to cwd to before exec (def no cwd)
 ;umask=022                     ; umask for process (default None)
-;priority=999                  ; the relative start priority (default 999)
+priority=998                  ; the relative start priority (default 999)
 ;autostart=true                ; start at supervisord start (default: true)
 ;autorestart=true              ; retstart at unexpected quit (default: true)
 ;startsecs=10                  ; number of secs prog must stay running (def. 1)
@@ -296,7 +296,7 @@ command=XMLServer -ipAddr ${XIP} -ports ${XPORTS} -nThread ${XNTHREAD}          
 ;numprocs=1                    ; number of processes copies to start (def 1)
 directory=/xml_server               ; directory to cwd to before exec (def no cwd)
 ;umask=022                     ; umask for process (default None)
-;priority=999                  ; the relative start priority (default 999)
+priority=998                  ; the relative start priority (default 999)
 ;autostart=true                ; start at supervisord start (default: true)
 ;autorestart=true              ; retstart at unexpected quit (default: true)
 ;startsecs=10                  ; number of secs prog must stay running (def. 1)
