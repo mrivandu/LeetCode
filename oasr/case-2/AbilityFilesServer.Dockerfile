@@ -152,7 +152,7 @@ ENV THREAD_NUM="10" \
     LOGLEVEL="2"
 
 ENTRYPOINT \
-    [ "ability-file-sync.sh" ]
+    [ "ability-files-sync.sh" ]
 
 EXPOSE \
     20101 20103 20104 29090
