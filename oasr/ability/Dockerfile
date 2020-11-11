@@ -1,4 +1,4 @@
-FROM baseImage
+FROM scratch
 
 LABEL author="duruihong" e-mail="duruihong@cmos.chinamobile.com" vendor="cmos" name="asrability" version="2.2.1"
  

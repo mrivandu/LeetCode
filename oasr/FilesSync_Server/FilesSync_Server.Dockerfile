@@ -59,7 +59,7 @@ LABEL \
     app="Offline_System_Client" \
     vendor="CMOS" \
     author="Ivan Du" \
-    version="2.1.2"
+    version="2.2.1"
 
 COPY \
     --from=0 [ "/achievements.tar.gz","/os","/" ]
@@ -94,5 +94,7 @@ ENV THREAD_NUM="10" \
     IPADDRESS="127.0.0.1" \
     PORT="29090" \
     LOGLEVEL="2"
+
+EXPOSE 29090
 
 CMD [ "/bin/bash","-c","exec tini -- FilesSync_Server ${THREAD_NUM} ${IPADDRESS} ${PORT} ${LOGLEVEL}" ]

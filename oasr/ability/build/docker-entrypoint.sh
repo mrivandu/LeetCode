@@ -5,7 +5,7 @@
 
 set -eux
 mkdir -p /apache-tomcat-8.5.5/webapps/WEB-INF/classes
-cat>/apache-tomcat-8.5.5/webapps/ability/WEB-INF/classes/redis.properties<<-EOF
+cat>/apache-tomcat-8.5.5/webapps/WEB-INF/classes/redis.properties<<-EOF
 isCluster=${ISCLUSTER}
 redisAdd=${REDISADD}
 redis.server=${REDIS_SERVER}
@@ -21,14 +21,14 @@ initialCapacity=${INITIALCAPACITY}
 maximumSize=${MAXIMUMSIZE}
 EOF
 
-cat>/apache-tomcat-8.5.5/webapps/ability/WEB-INF/classes/jdbc.properties<<-EOF
+cat>/apache-tomcat-8.5.5/webapps/WEB-INF/classes/jdbc.properties<<-EOF
 driver=${DRIVER}
 url=${URL}
 username=${USERNAME}
 password=${PASSWORD}
 EOF
 
-cat>/apache-tomcat-8.5.5/webapps/ability/WEB-INF/classes/log4j.properties<<-EOF
+cat>/apache-tomcat-8.5.5/webapps/WEB-INF/classes/log4j.properties<<-EOF
 # define log level and output
 log4j.rootLogger=${LOG4J_ROOTLOGGER}
 
@@ -67,7 +67,7 @@ cd /apache-tomcat-8.5.34/webapps
 jar -uf ability.war WEB-INF/classes/redis.properties
 jar -uf ability.war WEB-INF/classes/jdbc.properties
 jar -uf ability.war WEB-INF/classes/log4j.properties
-rm -rf ability
+rm -rf WEB-INF
 cd /apache-tomcat-8.5.5/bin
 
 exec "$@"
